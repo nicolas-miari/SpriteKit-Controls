@@ -9,6 +9,9 @@ import SpriteKit
 
 open class Button: Control {
 
+    // MARK: - iOS
+
+    #if os(iOS)
     open override func touchDown() {
         self.state = .highlighted
         super.touchDown()
@@ -36,4 +39,48 @@ open class Button: Control {
     public func addHandler(_ handler: @escaping Handler) {
         super.addHandler(handler, for: .touchUpInside)
     }
+    #endif
+
+    // MARK: - macOS
+
+    #if os(macOS)
+
+    open override func mouseEntered() {
+        self.state = .highlighted
+        super.mouseEntered()
+    }
+
+    open override func mouseDown() {
+        self.state = .selected
+        super.mouseDown()
+    }
+
+    open override func mouseDragExit() {
+        self.state = .normal
+        super.mouseDragExit()
+    }
+
+    open override func mouseDragEnter() {
+        self.state = .selected
+        super.mouseDragEnter()
+    }
+
+    open override func mouseUpInside() {
+        self.state = .highlighted
+        super.mouseUpInside()
+    }
+
+    open override func mouseExited() {
+        self.state = .normal
+        super.mouseExited()
+    }
+
+    /**
+     Convenient shortcut for addHandler(_:for:) fixed on the `.mouseUpInside`
+     event most common fir button controls.
+     */
+    public func addHandler(_ handler: @escaping Handler) {
+        super.addHandler(handler, for: .mouseUpInside)
+    }
+    #endif
 }
