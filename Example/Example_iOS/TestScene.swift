@@ -16,9 +16,7 @@ class TestScene: SKScene {
 
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         let atlas = SKTextureAtlas(named: "Buttons")
-        let button = Button(color: .red, size: CGSize(width: 200, height: 50))
-
-        button.setBackgroundTexture(atlas.textureNamed("ButtonNormal"), for: .normal)
+        let button = Button(normalTexture: atlas.textureNamed("ButtonNormal"))
         button.setBackgroundTexture(atlas.textureNamed("ButtonHighlighted"), for: .highlighted)
         button.setBackgroundTexture(atlas.textureNamed("ButtonDisabled"), for: .disabled)
 

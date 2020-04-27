@@ -52,15 +52,19 @@ open class Control: SKSpriteNode {
 
     public var state: State = .normal {
         didSet {
-            self.texture = backgroundTextures[state]
+            if let texture = backgroundTextures[state] ?? backgroundTextures[.normal] {
+                self.texture = texture
+                self.size = texture.size()
+            }
             self.isUserInteractionEnabled = (state != .disabled)
         }
     }
 
     // MARK: - Initialization
 
-    override init(texture: SKTexture?, color: SKColor, size: CGSize) {
-        super.init(texture: texture, color: color, size: size)
+    public init(normalTexture: SKTexture) {
+        super.init(texture: normalTexture, color: .white, size: normalTexture.size())
+        self.backgroundTextures[.normal] = normalTexture
         self.isUserInteractionEnabled = true
     }
 
