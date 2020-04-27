@@ -3,7 +3,7 @@ Reusable GUI components (a.k.a. _controls_) for touch-based (iOS) and mouse-base
 
 ## Overall Design
 
-The classes, while being SpriteKit **node subclasses**, should in principle mirror those in UIKit/AppKit (UIControl/NSControl, UIButton/NSButton), _minus_ all the Cocoa/Objective-C-specific baggage (e.g., target-action, KVO, etc.) and adopt a more swifty design.
+The classes, while being SpriteKit **node subclasses**, should in principle mirror those in UIKit/AppKit (UIControl/NSControl, UIButton/NSButton), _minus_ all the Cocoa/Objective-C-specific baggage (e.g., target-action design pattern, KVO/KVC, etc.) and adopt a more swifty design.
 
 ## Class Hierarchy
 
