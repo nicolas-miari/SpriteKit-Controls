@@ -1,4 +1,4 @@
-# SpriteKit-Touch-Controls
+# SpriteKit-Controls
 Reusable UI components for touch-based (iOS) SpriteKit projects.
 
 ## Overall Design
@@ -17,9 +17,9 @@ registration, background texture/color per state.
 ### Button
 
 Subclasses Control, implements:
-  1. Button-specific logic - state transitions driven by touch
-events that are consistent with button-like behavior (select on touch-down, etc.)
-  2. Button-specific appearance - configurable title label. 
+1. Button-specific logic - state transitions driven by touch/mouse events, consistent with 
+button-like behavior (select on touch-down, etc.)
+2. Button-specific appearance - configurable title label. 
 
 ### To Do
 

@@ -6,17 +6,21 @@
 //  Copyright © 2020 Nicolás Miari. All rights reserved.
 //
 
-import Cocoa
 import SpriteKit
-import GameplayKit
+import SpriteKitControls
 
 class ViewController: NSViewController {
 
-    @IBOutlet var skView: SKView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    /**
+     On macOS, instead of using/subclassing SKView directly, use/subclass the
+     provided **TrackingView**. This class is itself a subclass of SKView which
+     (unlike NSView and SKView) is set up from the get-go to receive the
+     `mouseMoved(with:)` event, essential for `Button` controls to function
+     properly.
+     */
+    @IBOutlet var skView: TrackingView!
+
+    // MARK: - NSViewController
 
     override func viewWillAppear() {
         super.viewWillAppear()
@@ -28,4 +32,3 @@ class ViewController: NSViewController {
         skView.presentScene(scene)
     }
 }
-

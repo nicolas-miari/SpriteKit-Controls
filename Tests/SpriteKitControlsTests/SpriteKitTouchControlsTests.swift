@@ -1,7 +1,7 @@
 import XCTest
-@testable import SpriteKitTouchControls
+@testable import SpriteKitControls
 
-final class SpriteKitTouchControlsTests: XCTestCase {
+final class SpriteKitControlsTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct

@@ -1,6 +1,6 @@
 import XCTest
 
-import SpriteKitTouchControlsTests
+import SpriteKitControlsTests
 
 var tests = [XCTestCaseEntry]()
 tests += SpriteKitTouchControlsTests.allTests()

@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F61703F24568DC000F8D85E /* SpriteKitTouchControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F61703E24568DC000F8D85E /* SpriteKitTouchControls */; };
 		1F617041245697E800F8D85E /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F617040245697E800F8D85E /* TestScene.swift */; };
 		1F6170492456B2B300F8D85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6170482456B2B300F8D85E /* AppDelegate.swift */; };
 		1F6170512456B2B300F8D85E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6170502456B2B300F8D85E /* ViewController.swift */; };
 		1F6170532456B2B400F8D85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F6170522456B2B400F8D85E /* Assets.xcassets */; };
 		1F6170562456B2B400F8D85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F6170542456B2B400F8D85E /* Main.storyboard */; };
 		1F61705D2456B2F500F8D85E /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F61705C2456B2F500F8D85E /* TestScene.swift */; };
-		1F6170602456B3F100F8D85E /* SpriteKitTouchControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F61705F2456B3F100F8D85E /* SpriteKitTouchControls */; };
+		1F6170632456C23600F8D85E /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6170622456C23600F8D85E /* SpriteKitControls */; };
+		1F6170652456C25500F8D85E /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F6170642456C25500F8D85E /* SpriteKitControls */; };
 		1FD0FD5D24555379007BF4F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0FD5C24555379007BF4F2 /* AppDelegate.swift */; };
 		1FD0FD6524555379007BF4F2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0FD6424555379007BF4F2 /* GameViewController.swift */; };
 		1FD0FD6824555379007BF4F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD0FD6624555379007BF4F2 /* Main.storyboard */; };
@@ -32,7 +32,7 @@
 		1F6170572456B2B400F8D85E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F6170582456B2B400F8D85E /* Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example_macOS.entitlements; sourceTree = "<group>"; };
 		1F61705C2456B2F500F8D85E /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
-		1FD0FD5924555379007BF4F2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FD0FD5924555379007BF4F2 /* Example_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD0FD5C24555379007BF4F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FD0FD6424555379007BF4F2 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1FD0FD6724555379007BF4F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F6170602456B3F100F8D85E /* SpriteKitTouchControls in Frameworks */,
+				1F6170652456C25500F8D85E /* SpriteKitControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F61703F24568DC000F8D85E /* SpriteKitTouchControls in Frameworks */,
+				1F6170632456C23600F8D85E /* SpriteKitControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,7 @@
 		1FD0FD5024555379007BF4F2 = {
 			isa = PBXGroup;
 			children = (
-				1FD0FD5B24555379007BF4F2 /* Example */,
+				1FD0FD5B24555379007BF4F2 /* Example_iOS */,
 				1F6170472456B2B300F8D85E /* Example_macOS */,
 				1FD0FD5A24555379007BF4F2 /* Products */,
 				1FD0FD742455541F007BF4F2 /* SpriteKit-Touch-Controls */,
@@ -97,13 +97,13 @@
 		1FD0FD5A24555379007BF4F2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FD0FD5924555379007BF4F2 /* Example.app */,
+				1FD0FD5924555379007BF4F2 /* Example_iOS.app */,
 				1F6170462456B2B300F8D85E /* Example_macOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FD0FD5B24555379007BF4F2 /* Example */ = {
+		1FD0FD5B24555379007BF4F2 /* Example_iOS */ = {
 			isa = PBXGroup;
 			children = (
 				1FD0FD5C24555379007BF4F2 /* AppDelegate.swift */,
@@ -114,7 +114,7 @@
 				1FD0FD6B2455537B007BF4F2 /* LaunchScreen.storyboard */,
 				1FD0FD6E2455537B007BF4F2 /* Info.plist */,
 			);
-			path = Example;
+			path = Example_iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,15 +134,15 @@
 			);
 			name = Example_macOS;
 			packageProductDependencies = (
-				1F61705F2456B3F100F8D85E /* SpriteKitTouchControls */,
+				1F6170642456C25500F8D85E /* SpriteKitControls */,
 			);
 			productName = Example_macOS;
 			productReference = 1F6170462456B2B300F8D85E /* Example_macOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1FD0FD5824555379007BF4F2 /* Example */ = {
+		1FD0FD5824555379007BF4F2 /* Example_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FD0FD712455537B007BF4F2 /* Build configuration list for PBXNativeTarget "Example" */;
+			buildConfigurationList = 1FD0FD712455537B007BF4F2 /* Build configuration list for PBXNativeTarget "Example_iOS" */;
 			buildPhases = (
 				1FD0FD5524555379007BF4F2 /* Sources */,
 				1FD0FD5624555379007BF4F2 /* Frameworks */,
@@ -152,12 +152,12 @@
 			);
 			dependencies = (
 			);
-			name = Example;
+			name = Example_iOS;
 			packageProductDependencies = (
-				1F61703E24568DC000F8D85E /* SpriteKitTouchControls */,
+				1F6170622456C23600F8D85E /* SpriteKitControls */,
 			);
 			productName = Example;
-			productReference = 1FD0FD5924555379007BF4F2 /* Example.app */;
+			productReference = 1FD0FD5924555379007BF4F2 /* Example_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,13 +188,13 @@
 			);
 			mainGroup = 1FD0FD5024555379007BF4F2;
 			packageReferences = (
-				1F61703D24568DC000F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Touch-Controls" */,
+				1F6170612456C23600F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */,
 			);
 			productRefGroup = 1FD0FD5A24555379007BF4F2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1FD0FD5824555379007BF4F2 /* Example */,
+				1FD0FD5824555379007BF4F2 /* Example_iOS */,
 				1F6170452456B2B300F8D85E /* Example_macOS */,
 			);
 		};
@@ -437,7 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Example_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,7 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
-				INFOPLIST_FILE = Example/Info.plist;
+				INFOPLIST_FILE = Example_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,7 +488,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FD0FD712455537B007BF4F2 /* Build configuration list for PBXNativeTarget "Example" */ = {
+		1FD0FD712455537B007BF4F2 /* Build configuration list for PBXNativeTarget "Example_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FD0FD722455537B007BF4F2 /* Debug */,
@@ -500,9 +500,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1F61703D24568DC000F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Touch-Controls" */ = {
+		1F6170612456C23600F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "file:///Users/nicolasmiari/Projects/com.nicolasmiari/SpriteKit-Touch-Controls";
+			repositoryURL = "file:///Users/nicolasmiari/Projects/com.nicolasmiari/SpriteKit-Controls";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.0.1;
@@ -511,14 +511,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F61703E24568DC000F8D85E /* SpriteKitTouchControls */ = {
+		1F6170622456C23600F8D85E /* SpriteKitControls */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1F61703D24568DC000F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Touch-Controls" */;
-			productName = SpriteKitTouchControls;
+			package = 1F6170612456C23600F8D85E /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */;
+			productName = SpriteKitControls;
 		};
-		1F61705F2456B3F100F8D85E /* SpriteKitTouchControls */ = {
+		1F6170642456C25500F8D85E /* SpriteKitControls */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SpriteKitTouchControls;
+			productName = SpriteKitControls;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

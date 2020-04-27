@@ -143,6 +143,8 @@ open class Control: SKSpriteNode {
     // MARK: - NSResponder
 
     override open func mouseDown(with event: NSEvent) {
+        guard isUserInteractionEnabled else { return }
+
         let location = event.location(in: self.parent!)
 
         guard self.contains(location) else {
@@ -152,14 +154,18 @@ open class Control: SKSpriteNode {
     }
 
     override open func mouseEntered(with event: NSEvent) {
+        guard isUserInteractionEnabled else { return }
         mouseEntered()
     }
 
     override open func mouseExited(with event: NSEvent) {
+        guard isUserInteractionEnabled else { return }
         mouseExited()
     }
 
     override open func mouseDragged(with event: NSEvent) {
+        guard isUserInteractionEnabled else { return }
+
         let location = event.location(in: self.parent!)
         if self.contains(location) {
             mouseDragInside()
@@ -169,6 +175,7 @@ open class Control: SKSpriteNode {
     }
 
     override open func mouseUp(with event: NSEvent) {
+        guard isUserInteractionEnabled else { return }
         let location = event.location(in: self.parent!)
         if self.contains(location) {
             mouseUpInside()

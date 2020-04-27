@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "disabled@1x.png",
       "idiom" : "mac",
       "scale" : "1x"
     },

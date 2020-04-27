@@ -7,7 +7,7 @@
 //
 
 import SpriteKit
-import SpriteKitTouchControls
+import SpriteKitControls
 
 class TestScene: SKScene {
 
