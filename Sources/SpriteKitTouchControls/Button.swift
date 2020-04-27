@@ -10,25 +10,29 @@ import SpriteKit
 open class Button: Control {
 
     open override func touchDown() {
-        super.touchDown()
         self.state = .highlighted
+        super.touchDown()
     }
 
     open override func touchUpInside() {
-        super.touchUpInside()
         self.state = .normal
+        super.touchUpInside()
     }
 
     open override func touchDragExit() {
-        super.touchDragExit()
         self.state = .normal
+        super.touchDragExit()
     }
 
     open override func touchDragEnter() {
-        super.touchDragEnter()
         self.state = .highlighted
+        super.touchDragEnter()
     }
 
+    /**
+     Convenient shortcut for addHandler(_:for:) fixed on the `.touchUpInside`
+     event most common fir button controls.
+     */
     public func addHandler(_ handler: @escaping Handler) {
         super.addHandler(handler, for: .touchUpInside)
     }

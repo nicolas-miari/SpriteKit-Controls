@@ -48,6 +48,8 @@ class TestScene: SKScene {
 
         button.addHandler({
             print("Up Inside!")
+            button.state = .disabled
+
         }, for: .touchUpInside)
 
         self.addChild(button)

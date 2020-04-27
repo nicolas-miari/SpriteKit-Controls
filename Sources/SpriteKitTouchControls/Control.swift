@@ -43,6 +43,7 @@ open class Control: SKSpriteNode {
     public var state: State = .normal {
         didSet {
             self.texture = backgroundTextures[state]
+            self.isUserInteractionEnabled = (state != .disabled)
         }
     }
 
