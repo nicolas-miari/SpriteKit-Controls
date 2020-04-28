@@ -17,38 +17,37 @@ class TestScene: SKScene {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         let atlas = SKTextureAtlas(named: "Buttons")
         let button = Button(normalTexture: atlas.textureNamed("ButtonNormal"))
-        button.setBackgroundTexture(atlas.textureNamed("ButtonHighlighted"), for: .highlighted)
+        button.setBackgroundTexture(atlas.textureNamed("ButtonHighlighted"), for: .selected)
         button.setBackgroundTexture(atlas.textureNamed("ButtonDisabled"), for: .disabled)
 
         button.addHandler({
             print("Down!")
-        }, for: .touchDown)
+        }, for: .press)
 
         button.addHandler({
             print("Drag Inside!")
-        }, for: .touchDragInside)
+        }, for: .pressDragInside)
 
         button.addHandler({
             print("Drag Exit!")
-        }, for: .touchDragExit)
+        }, for: .pressDragExit)
 
         button.addHandler({
             print("Drag Outside!")
-        }, for: .touchDragOutside)
+        }, for: .pressDragOutside)
 
         button.addHandler({
             print("Up Outside")
-        }, for: .touchUpOutside)
+        }, for: .releaseOutside)
 
         button.addHandler({
             print("Drag Enter!")
-        }, for: .touchDragEnter)
+        }, for: .pressDragEnter)
 
         button.addHandler({
             print("Up Inside!")
             button.state = .disabled
-
-        }, for: .touchUpInside)
+        }, for: .releaseInside)
 
         self.addChild(button)
     }

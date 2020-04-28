@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-import SpriteKitControls
 
 class ViewController: NSViewController {
 
