@@ -2,53 +2,43 @@
 //  File.swift
 //  
 //
-//  Created by Nicolás Miari on 2020/04/27.
+//  Created by Nicolás Miari on 2020/04/28.
 //
+
 import SpriteKit
 
-#if os(macOS)
-
 open class Control: SKSpriteNode {
+
     public var soundHandler: ControlSoundHandler?
 
     public enum State {
-        /**
-         The default, 'ready' state.
-         */
         case normal
-
-        /**
-         The 'mouse-over' state.
-         */
         case highlighted
-
-        /**
-         The 'clicked' or 'activated' state.
-         */
         case selected
-
-        /**
-         The 'grayed', unresponsive state.
-         */
         case disabled
     }
 
     public enum Event {
-        case mouseEnter
-        case mouseExit
-        case mouseDown
-        case mouseDragInside
-        case mouseDragExit
-        case mouseDragOutside
-        case mouseDragEnter
-        case mouseUpInside
-        case mouseUpOutside
+        // macOS-only: corresponds to mouseEnter
+        case enter
+
+        // macOS-only: corresponds to mouseExit
+        case exit
+
+        case press
+
+        case pressDragInside
+
+        case pressDragExit
+
+        case pressDragOutside
+
+        case releaseOutside
+
+        case pressDragEnter
+
+        case releaseInside
     }
-
-    public typealias Handler = (() -> Void)
-
-    private var handlers: [Event: [Handler]] = [:]
-    private var backgroundTextures: [State: SKTexture] = [:]
 
     public var state: State = .normal {
         didSet {
@@ -59,6 +49,12 @@ open class Control: SKSpriteNode {
             self.isUserInteractionEnabled = (state != .disabled)
         }
     }
+
+    public typealias Handler = (() -> Void)
+
+
+    private var handlers: [Event: [Handler]] = [:]
+    private var backgroundTextures: [State: SKTexture] = [:]
 
     // MARK: - Initialization
 
@@ -95,55 +91,48 @@ open class Control: SKSpriteNode {
     // MARK: - Intents
 
     /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseEntered() {
-        handleMouseEvent(.mouseEnter)
+    open func entered() {
+        handleEvent(.enter)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseExited() {
-        handleMouseEvent(.mouseExit)
+    open func exited() {
+        handleEvent(.exit)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseDown() {
-        handleMouseEvent(.mouseDown)
+    open func press() {
+        handleEvent(.press)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseDragInside() {
-        handleMouseEvent(.mouseDragInside)
+    open func pressDragInside() {
+        handleEvent(.pressDragInside)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseDragExit() {
-        handleMouseEvent(.mouseDragExit)
+    open func pressDragExit() {
+        handleEvent(.pressDragExit)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseDragOutside() {
-        handleMouseEvent(.mouseDragOutside)
+    open func pressDragOutside() {
+        handleEvent(.pressDragOutside)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseDragEnter() {
-        handleMouseEvent(.mouseDragEnter)
+    open func releaseOutside() {
+        handleEvent(.releaseOutside)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseUpInside() {
-        handleMouseEvent(.mouseUpInside)
+    open func pressDragEnter() {
+        handleEvent(.pressDragEnter)
     }
 
-    /// Subclsses can override and manipulate the value of `state` accordingly.
-    open func mouseUpOutside() {
-        handleMouseEvent(.mouseUpOutside)
+    open func releaseInside() {
+        handleEvent(.releaseInside)
     }
 
-    private func handleMouseEvent(_ event: Event) {
+    private func handleEvent(_ event: Event) {
         soundHandler?.playSound(for: event, of: self)
         handlers[event]?.forEach { $0() }
     }
 
+    #if os(macOS)
     // MARK: - NSResponder
 
     override open func mouseDown(with event: NSEvent) {
@@ -159,12 +148,12 @@ open class Control: SKSpriteNode {
 
     override open func mouseEntered(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
-        mouseEntered()
+        entered()
     }
 
     override open func mouseExited(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
-        mouseExited()
+        exited()
     }
 
     override open func mouseDragged(with event: NSEvent) {
@@ -172,9 +161,9 @@ open class Control: SKSpriteNode {
 
         let location = event.location(in: self.parent!)
         if self.contains(location) {
-            mouseDragInside()
+            pressDragInside()
         } else {
-            mouseDragOutside()
+            pressDragOutside()
         }
     }
 
@@ -182,11 +171,60 @@ open class Control: SKSpriteNode {
         guard isUserInteractionEnabled else { return }
         let location = event.location(in: self.parent!)
         if self.contains(location) {
-            mouseUpInside()
+            releaseInside()
         } else {
-            mouseUpOutside()
+            releaseOutside()
         }
     }
-}
+    #endif
 
-#endif
+    #if os(iOS)
+    // MARK: - UIResponder
+
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = touches.first?.location(in: self.parent!) else {
+            return
+        }
+        if self.contains(location) {
+            press()
+        }
+    }
+
+    open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let current = touch.location(in: self)
+        let previous = touch.previousLocation(in: self)
+
+        switch (contains(current), contains(previous)) {
+        case (true, true):
+            pressDragInside()
+
+        case (true, false):
+            pressDragEnter()
+
+        case (false, true):
+            pressDragExit()
+
+        case (false, false):
+            pressDragOutside()
+        }
+    }
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let location = touches.first?.location(in: self.parent!) else {
+            return
+        }
+        if self.contains(location) {
+            releaseInside()
+        } else {
+            releaseOutside()
+        }
+    }
+
+    open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        touchesEnded(touches, with: event)
+    }
+    #endif
+}

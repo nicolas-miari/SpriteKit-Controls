@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SpriteKitControls",
+        "repositoryURL": "/Users/nicolasmiari/Projects/com.nicolasmiari/SpriteKit-Controls",
+        "state": {
+          "branch": null,
+          "revision": "9b13766d72973d2ff88972a1a403354a0a3d7c37",
+          "version": "0.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
