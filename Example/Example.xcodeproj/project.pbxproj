@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F553F1A2457DA0A00FB720A /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F553F192457DA0A00FB720A /* Package.swift */; };
+		1F553F1D2457DA3C00FB720A /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F553F1C2457DA3C00FB720A /* SpriteKitControls */; };
+		1F553F1F2457DA4600FB720A /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F553F1E2457DA4600FB720A /* SpriteKitControls */; };
 		1F617041245697E800F8D85E /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F617040245697E800F8D85E /* TestScene.swift */; };
 		1F6170492456B2B300F8D85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6170482456B2B300F8D85E /* AppDelegate.swift */; };
 		1F6170512456B2B300F8D85E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6170502456B2B300F8D85E /* ViewController.swift */; };
@@ -21,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F553F182457D9EF00FB720A /* SpriteKit-Controls */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SpriteKit-Controls"; path = ..; sourceTree = "<group>"; };
+		1F553F192457DA0A00FB720A /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		1F617040245697E800F8D85E /* TestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene.swift; sourceTree = "<group>"; };
 		1F6170462456B2B300F8D85E /* Example_macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example_macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F6170482456B2B300F8D85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F553F1F2457DA4600FB720A /* SpriteKitControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F553F1D2457DA3C00FB720A /* SpriteKitControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +81,8 @@
 		1F61705E2456B3F100F8D85E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F553F192457DA0A00FB720A /* Package.swift */,
+				1F553F182457D9EF00FB720A /* SpriteKit-Controls */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +137,7 @@
 			);
 			name = Example_macOS;
 			packageProductDependencies = (
+				1F553F1E2457DA4600FB720A /* SpriteKitControls */,
 			);
 			productName = Example_macOS;
 			productReference = 1F6170462456B2B300F8D85E /* Example_macOS.app */;
@@ -147,6 +157,7 @@
 			);
 			name = Example_iOS;
 			packageProductDependencies = (
+				1F553F1C2457DA3C00FB720A /* SpriteKitControls */,
 			);
 			productName = Example;
 			productReference = 1FD0FD5924555379007BF4F2 /* Example_iOS.app */;
@@ -180,6 +191,7 @@
 			);
 			mainGroup = 1FD0FD5024555379007BF4F2;
 			packageReferences = (
+				1F553F1B2457DA3C00FB720A /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */,
 			);
 			productRefGroup = 1FD0FD5A24555379007BF4F2 /* Products */;
 			projectDirPath = "";
@@ -228,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F553F1A2457DA0A00FB720A /* Package.swift in Sources */,
 				1FD0FD6524555379007BF4F2 /* GameViewController.swift in Sources */,
 				1F617041245697E800F8D85E /* TestScene.swift in Sources */,
 				1FD0FD5D24555379007BF4F2 /* AppDelegate.swift in Sources */,
@@ -489,6 +502,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F553F1B2457DA3C00FB720A /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/nicolasmiari/Projects/com.nicolasmiari/SpriteKit-Controls";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F553F1C2457DA3C00FB720A /* SpriteKitControls */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F553F1B2457DA3C00FB720A /* XCRemoteSwiftPackageReference "SpriteKit-Controls" */;
+			productName = SpriteKitControls;
+		};
+		1F553F1E2457DA4600FB720A /* SpriteKitControls */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SpriteKitControls;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1FD0FD5124555379007BF4F2 /* Project object */;
 }
