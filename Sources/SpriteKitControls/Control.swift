@@ -135,10 +135,13 @@ open class Control: SKSpriteNode {
     #if os(macOS)
     // MARK: - NSResponder
 
+    private var lastLocation: CGPoint?
+
     override open func mouseDown(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
 
         let location = event.location(in: self.parent!)
+        self.lastLocation = location
 
         guard self.contains(location) else {
             return
@@ -148,11 +151,19 @@ open class Control: SKSpriteNode {
 
     override open func mouseEntered(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+
+        let location = event.location(in: self.parent!)
+        self.lastLocation = location
+
         entered()
     }
 
     override open func mouseExited(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+
+        let location = event.location(in: self.parent!)
+        self.lastLocation = location
+
         exited()
     }
 
@@ -160,11 +171,20 @@ open class Control: SKSpriteNode {
         guard isUserInteractionEnabled else { return }
 
         let location = event.location(in: self.parent!)
-        if self.contains(location) {
+        switch (self.contains(location), self.contains(lastLocation!)) {
+        case (true, true):
             pressDragInside()
-        } else {
+
+        case (true, false):
+            pressDragEnter()
+
+        case (false, true):
+            pressDragExit()
+
+        case (false, false):
             pressDragOutside()
         }
+        self.lastLocation = location
     }
 
     override open func mouseUp(with event: NSEvent) {
