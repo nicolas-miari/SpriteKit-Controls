@@ -14,20 +14,12 @@ open class Switch: Control {
         case .normal:
             self.state = .selected
 
-        default:
-            break
-        }
-        super.press()
-    }
-
-    override open func releaseInside() {
-        switch state {
         case .selected:
             self.state = .normal
 
         default:
             break
         }
-        super.releaseInside()
+        super.press()
     }
 }
