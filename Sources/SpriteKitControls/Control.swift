@@ -9,7 +9,7 @@ import SpriteKit
 
 open class Control: SKSpriteNode {
 
-    public var soundHandler: ControlSoundHandler?
+    public static var soundHandler: ControlSoundHandler?
 
     public enum State {
         case normal
@@ -128,7 +128,7 @@ open class Control: SKSpriteNode {
     }
 
     private func handleEvent(_ event: Event) {
-        soundHandler?.playSound(for: event, of: self)
+        Control.soundHandler?.playSound(for: event, of: self)
         handlers[event]?.forEach { $0() }
     }
 
