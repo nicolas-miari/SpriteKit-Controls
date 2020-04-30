@@ -139,8 +139,9 @@ open class Control: SKSpriteNode {
 
     override open func mouseDown(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+        guard let parent = self.parent else { return }
 
-        let location = event.location(in: self.parent!)
+        let location = event.location(in: parent)
         self.lastLocation = location
 
         guard self.contains(location) else {
@@ -151,8 +152,9 @@ open class Control: SKSpriteNode {
 
     override open func mouseEntered(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+        guard let parent = self.parent else { return }
 
-        let location = event.location(in: self.parent!)
+        let location = event.location(in: parent)
         self.lastLocation = location
 
         entered()
@@ -160,8 +162,9 @@ open class Control: SKSpriteNode {
 
     override open func mouseExited(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+        guard let parent = self.parent else { return }
 
-        let location = event.location(in: self.parent!)
+        let location = event.location(in: parent)
         self.lastLocation = location
 
         exited()
@@ -169,27 +172,34 @@ open class Control: SKSpriteNode {
 
     override open func mouseDragged(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
+        guard let parent = self.parent else { return }
 
-        let location = event.location(in: self.parent!)
-        switch (self.contains(location), self.contains(lastLocation!)) {
-        case (true, true):
-            pressDragInside()
+        let location = event.location(in: parent)
 
-        case (true, false):
-            pressDragEnter()
+        if let last = lastLocation {
+            switch (self.contains(location), self.contains(last)) {
+            case (true, true):
+                pressDragInside()
 
-        case (false, true):
-            pressDragExit()
+            case (true, false):
+                pressDragEnter()
 
-        case (false, false):
-            pressDragOutside()
+            case (false, true):
+                pressDragExit()
+
+            case (false, false):
+                pressDragOutside()
+            }
         }
+
         self.lastLocation = location
     }
 
     override open func mouseUp(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
-        let location = event.location(in: self.parent!)
+        guard let parent = self.parent else { return }
+
+        let location = event.location(in: parent)
         if self.contains(location) {
             releaseInside()
         } else {
@@ -202,7 +212,10 @@ open class Control: SKSpriteNode {
     // MARK: - UIResponder
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self.parent!) else {
+        guard let parent = self.parent else {
+            return
+        }
+        guard let location = touches.first?.location(in: parent) else {
             return
         }
         if self.contains(location) {
@@ -233,7 +246,10 @@ open class Control: SKSpriteNode {
     }
 
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let location = touches.first?.location(in: self.parent!) else {
+        guard let parent = self.parent else {
+            return
+        }
+        guard let location = touches.first?.location(in: parent) else {
             return
         }
         if self.contains(location) {

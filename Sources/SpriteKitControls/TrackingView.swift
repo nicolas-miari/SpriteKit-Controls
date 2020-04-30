@@ -34,14 +34,25 @@ open class TrackingView: SKView {
         /*
          Taken from: https://stackoverflow.com/a/41878227/433373
          */
-        if trackingArea != nil {
-            self.removeTrackingArea(trackingArea!)
+
+        // Remove existing (if present)
+        if let trackingArea = self.trackingArea {
+            self.removeTrackingArea(trackingArea)
         }
-        let options: NSTrackingArea.Options =
-            [.mouseEnteredAndExited, .mouseMoved, .activeInKeyWindow]
-        trackingArea = NSTrackingArea(rect: self.bounds, options: options,
-                                      owner: self, userInfo: nil)
-        self.addTrackingArea(trackingArea!)
+
+        // Create new:
+        let options: NSTrackingArea.Options = [
+            .mouseEnteredAndExited,
+            .mouseMoved,
+            .activeInKeyWindow
+        ]
+
+        self.trackingArea = NSTrackingArea(
+            rect: self.bounds,
+            options: options,
+            owner: self,
+            userInfo: nil
+        )
     }
 
     open override func mouseMoved(with event: NSEvent) {
