@@ -71,6 +71,15 @@ open class Control: SKSpriteNode {
         self.isUserInteractionEnabled = true
     }
 
+    override open func contains(_ p: CGPoint) -> Bool {
+        let origin = CGPoint(
+            x: position.x - (anchorPoint.x)*size.width,
+            y: position.y - (anchorPoint.y)*size.height
+        )
+        let bounds = CGRect(origin: origin, size: size)
+        return bounds.contains(p)
+    }
+
     // MARK: - Operation
 
     public func addHandler(_ handler: @escaping Handler, for event: Event) {

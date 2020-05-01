@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F553F1A2457DA0A00FB720A /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F553F192457DA0A00FB720A /* Package.swift */; };
 		1F553F1D2457DA3C00FB720A /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F553F1C2457DA3C00FB720A /* SpriteKitControls */; };
 		1F553F1F2457DA4600FB720A /* SpriteKitControls in Frameworks */ = {isa = PBXBuildFile; productRef = 1F553F1E2457DA4600FB720A /* SpriteKitControls */; };
 		1F617041245697E800F8D85E /* TestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F617040245697E800F8D85E /* TestScene.swift */; };
@@ -240,7 +239,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F553F1A2457DA0A00FB720A /* Package.swift in Sources */,
 				1FD0FD6524555379007BF4F2 /* GameViewController.swift in Sources */,
 				1F617041245697E800F8D85E /* TestScene.swift in Sources */,
 				1FD0FD5D24555379007BF4F2 /* AppDelegate.swift in Sources */,
@@ -442,6 +440,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
 				INFOPLIST_FILE = Example_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,6 +459,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D2D4S4F85R;
 				INFOPLIST_FILE = Example_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
