@@ -234,10 +234,12 @@ open class Control: SKSpriteNode {
     }
 
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
+        guard let parent = self.parent else {
             return
         }
-        let current = touch.location(in: self)
+        guard let current = touches.first?.location(in: parent) else {
+            return
+        }
 
         if let previous = lastLocation {
             switch (contains(current), contains(previous)) {
