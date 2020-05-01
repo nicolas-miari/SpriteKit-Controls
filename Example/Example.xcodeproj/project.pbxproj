@@ -509,7 +509,7 @@
 			repositoryURL = "file:///Users/nicolasmiari/Projects/com.nicolasmiari/SpriteKit-Controls";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.1.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

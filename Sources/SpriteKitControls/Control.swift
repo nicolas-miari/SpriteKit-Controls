@@ -52,7 +52,9 @@ open class Control: SKSpriteNode {
 
     public typealias Handler = (() -> Void)
 
+    // MARK: -
 
+    private var lastLocation: CGPoint?
     private var handlers: [Event: [Handler]] = [:]
     private var backgroundTextures: [State: SKTexture] = [:]
 
@@ -134,8 +136,6 @@ open class Control: SKSpriteNode {
 
     #if os(macOS)
     // MARK: - NSResponder
-
-    private var lastLocation: CGPoint?
 
     override open func mouseDown(with event: NSEvent) {
         guard isUserInteractionEnabled else { return }
@@ -221,6 +221,7 @@ open class Control: SKSpriteNode {
         if self.contains(location) {
             press()
         }
+        self.lastLocation = location
     }
 
     open override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -228,21 +229,23 @@ open class Control: SKSpriteNode {
             return
         }
         let current = touch.location(in: self)
-        let previous = touch.previousLocation(in: self)
 
-        switch (contains(current), contains(previous)) {
-        case (true, true):
-            pressDragInside()
+        if let previous = lastLocation {
+            switch (contains(current), contains(previous)) {
+            case (true, true):
+                pressDragInside()
 
-        case (true, false):
-            pressDragEnter()
+            case (true, false):
+                pressDragEnter()
 
-        case (false, true):
-            pressDragExit()
+            case (false, true):
+                pressDragExit()
 
-        case (false, false):
-            pressDragOutside()
+            case (false, false):
+                pressDragOutside()
+            }
         }
+        self.lastLocation = current
     }
 
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -257,6 +260,7 @@ open class Control: SKSpriteNode {
         } else {
             releaseOutside()
         }
+        self.lastLocation = nil
     }
 
     open override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
