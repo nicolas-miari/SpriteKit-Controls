@@ -11,6 +11,11 @@ open class RadioButton: Control {
 
     private(set) var group: RadioGroup?
 
+    /**
+     Executed every time the button state changes from `.normal` to `.selected`.
+     */
+    public var selectHandler: (() -> Void)?
+
     // MARK: - Operation
 
     /**
@@ -41,6 +46,7 @@ open class RadioButton: Control {
             } else {
                 self.state = .selected
             }
+            selectHandler?()
         default:
             break
         }
