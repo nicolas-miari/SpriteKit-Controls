@@ -38,7 +38,11 @@ open class RadioButton: Control {
 
 public class RadioGroup {
 
-    private(set) var buttons: [RadioButton] = []
+    private(set) var buttons: [RadioButton]
+
+    public init() {
+        self.buttons = []
+    }
 
     public func addButton(_ button: RadioButton) {
         if buttons.contains(button) {
